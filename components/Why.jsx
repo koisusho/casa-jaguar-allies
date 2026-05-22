@@ -111,6 +111,10 @@ Casa Jaguar handles the rest — you focus on doing what you already do well, gi
             <h3 className="step-title">Earn & Enjoy</h3>
             <p className="step-body">Points accumulate automatically. Redeem for meals,
               experiences, merchandise, and Prezzy Visa Cards — your choice, every time.</p>
+            <p style={{ marginTop: 12, fontFamily: '"Bebas Neue"', fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', letterSpacing: '0.08em', color: 'var(--fg)' }}>
+              10 pts = $1 at Casa Jaguar —{' '}
+              <span style={{ color: 'var(--accent)' }}>food, merch, TacoBox & catering.</span>
+            </p>
           </div>
         </div>
       </div>
