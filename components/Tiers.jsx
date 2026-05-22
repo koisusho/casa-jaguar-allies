@@ -101,8 +101,8 @@ function Tiers() {
     "Free meal at Casa Jaguar at 100 points",
     "Invitations to tasting nights & special events"],
 
-    rewardTitle: "A meal on us — and a standing invite.",
-    reward: "Bring a friend. Order whatever calls you. We pick up the tab. Plus a standing invite to our seasonal tasting nights — the kitchen comes out and sits with you."
+    rewardTitle: "Bring a friend, get free tacos.",
+    reward: "Enjoy your favorite tacos, on us, as a reward for reaching Águila Status. Bring a friend, order the tacos that you love, free of charge. You'll also receive ongoing invitations to our exclusive tasting nights, where you'll be among the first to try new dishes, seasonal creations, and special menu experiences, plus enjoy exclusive discounts on Casa Jaguar merchandise."
   },
   {
     id: "jaguar",
