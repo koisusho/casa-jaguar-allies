@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Casa Jaguar Allies — Real Recognition. Real Rewards. · Glenorchy, NZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Join the Casa Jaguar Allies program. Free hospitality network in Glenorchy, NZ — earn points and real rewards for the people you send our way." />
+  <link rel="icon" href="assets/jaguar-mask.png" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- React + Babel (pinned) -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Component files -->
+  <script type="text/babel" src="components/Nav.jsx"></script>
+  <script type="text/babel" src="components/Hero.jsx"></script>
+  <script type="text/babel" src="components/TrustBar.jsx"></script>
+  <script type="text/babel" src="components/Why.jsx"></script>
+  <script type="text/babel" src="components/Tiers.jsx"></script>
+  <script type="text/babel" src="components/AllyTypes.jsx"></script>
+  <script type="text/babel" src="components/SignupForm.jsx"></script>
+  <script type="text/babel" src="components/Footer.jsx"></script>
+
+  <script type="text/babel">
+    const { useRef } = React;
+
+    function App() {
+      const formRef = useRef(null);
+      const howRef = useRef(null);
+
+      const scrollTo = (id) => {
+        const el = document.getElementById(id);
+        if (el) window.scrollTo({ top: el.offsetTop - 60, behavior: 'smooth' });
+      };
+
+      return (
+        <div>
+          <Nav onJoin={() => scrollTo('signup')} />
+          <Hero
+            onJoin={() => scrollTo('signup')}
+            onLearn={() => scrollTo('how')}
+          />
+          <TrustBar />
+          <ValueProps />
+          <HowItWorks />
+          <Points />
+          <Tiers />
+          <CustomerPerks />
+          <AllyTypes />
+          <SignupForm formRef={formRef} />
+          <Footer />
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

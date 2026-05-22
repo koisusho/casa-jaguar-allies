@@ -1,0 +1,255 @@
+/* ============================================================
+   CASA JAGUAR — Design Tokens
+   Real Mexican Food · Glenorchy, NZ · @tacosjaguar.nz
+   Sourced from CasaJaguar_BrandGuidelines_2026.pdf
+   ============================================================ */
+
+/* ---- Google Fonts (master import from brand guidelines) ----
+   Note: "Argyle Socks" is a local font file supplied with the
+   brand kit but was NOT included in this upload. We fall back
+   to "Caveat" (handwritten, similar feel) on Google Fonts
+   until the real file is provided. See README.md.
+*/
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Nunito:wght@400;600;700;800&family=Caveat:wght@500;700&display=swap');
+
+:root {
+  /* ============================================================
+     COLORS — only Pantone-approved values, no inventions
+     ============================================================ */
+
+  /* Primary brand — the "fire" */
+  --jaguar-gold:      #F7A019;    /* anchor, headlines, gradient top */
+  --fire-orange:      #E85D1A;    /* energy, CTAs, gradient mid */
+  --chili-red:        #C0271A;    /* CTAs, depth, gradient bottom */
+
+  /* Secondary — accents only, never dominant backgrounds */
+  --magenta:          #D62A6E;
+  --aztec-purple:     #6B2F8A;
+  --jade-teal:        #00A896;
+
+  /* Neutrals & support */
+  --obsidian-black:   #0D0D0D;
+  --warm-cream:       #FBF5E6;
+  --forest-green:     #2A6B36;
+
+  /* Merch (AS Colour) — limited palette for apparel */
+  --merch-black:      #0D0D0D;
+  --merch-kelly:      #117A3E;
+  --merch-ecru:       #E8DFC4;
+  --merch-red:        #B7281B;
+
+  /* ============================================================
+     SEMANTIC TOKENS — how the brand actually lives in product
+     ============================================================ */
+
+  /* Surfaces — black anchors every design */
+  --bg:               var(--obsidian-black);
+  --bg-elevated:      #1A1410;            /* black + warm ember tint */
+  --bg-cream:         var(--warm-cream);  /* light alternate surface */
+  --bg-card:          rgba(255, 255, 255, 0.04);
+  --bg-card-hover:    rgba(255, 255, 255, 0.07);
+
+  /* Foreground */
+  --fg:               var(--warm-cream);
+  --fg-2:             #D9CFB8;           /* dimmer cream */
+  --fg-3:             #8A8174;           /* muted */
+  --fg-on-cream:      var(--obsidian-black);
+  --fg-on-cream-2:    #3D332A;
+  --fg-on-gold:       var(--obsidian-black);
+
+  /* Brand accents (semantic aliases) */
+  --accent:           var(--jaguar-gold);
+  --accent-hot:       var(--fire-orange);
+  --accent-deep:      var(--chili-red);
+
+  /* Borders */
+  --border:           rgba(251, 245, 230, 0.10);
+  --border-strong:    rgba(251, 245, 230, 0.22);
+  --border-gold:      var(--jaguar-gold);
+
+  /* Status (folded into brand palette — no generic system reds/greens) */
+  --status-success:   var(--forest-green);
+  --status-warn:      var(--jaguar-gold);
+  --status-error:     var(--chili-red);
+  --status-info:      var(--jade-teal);
+
+  /* ============================================================
+     SIGNATURE GRADIENTS — the Casa Jaguar wordmark gradient
+     ============================================================ */
+  --gradient-fire:        linear-gradient(180deg, #F7A019 0%, #E85D1A 55%, #C0271A 100%);
+  --gradient-fire-h:      linear-gradient(90deg,  #F7A019 0%, #E85D1A 55%, #C0271A 100%);
+  --gradient-ember:       radial-gradient(120% 80% at 50% 0%, #1A1410 0%, #0D0D0D 70%);
+  --gradient-string-lights: linear-gradient(180deg, rgba(247,160,25,0.18) 0%, transparent 40%);
+
+  /* ============================================================
+     TYPOGRAPHY — 5 typefaces, each with a FIXED role
+     ============================================================ */
+
+  /* Stacks (with Argyle Socks fallback flagged) */
+  --font-display:   "Bungee Spice", "Bebas Neue", system-ui, sans-serif;  /* hero, logo */
+  --font-sub:       "Bebas Neue", "Impact", sans-serif;                    /* sub, labels */
+  --font-location:  "Argyle Socks", "Caveat", "Brush Script MT", cursive;  /* location tags (SUBSTITUTED) */
+  --font-accent:    "Playfair Display", "Cormorant Garamond", Georgia, serif; /* quotes, taglines */
+  --font-body:      "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; /* body, UI */
+
+  /* Type scale — body in rem, display in absolute */
+  --fs-hero:        clamp(64px, 9vw, 144px);   /* Bungee Spice on landing */
+  --fs-display:     clamp(40px, 6vw, 88px);    /* Bungee Spice section heads */
+  --fs-h1:          48px;
+  --fs-h2:          36px;
+  --fs-h3:          28px;
+  --fs-h4:          22px;
+  --fs-lg:          20px;
+  --fs-base:        16px;
+  --fs-sm:          14px;
+  --fs-xs:          12px;
+
+  /* Line-heights */
+  --lh-display:     0.95;
+  --lh-heading:     1.1;
+  --lh-body:        1.55;
+  --lh-tight:       1.25;
+
+  /* Letter-spacing */
+  --ls-display:     -0.01em;
+  --ls-allcaps:     0.08em;   /* Bebas Neue & ALL-CAPS labels */
+  --ls-allcaps-tight: 0.04em;
+  --ls-body:        0;
+
+  /* ============================================================
+     SPACING — 4px base
+     ============================================================ */
+  --s-0: 0;
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+  --s-24: 96px;
+
+  /* ============================================================
+     RADII — restrained; the brand is graphic, not bubbly
+     ============================================================ */
+  --r-sm:    4px;
+  --r-md:    8px;
+  --r-lg:    14px;
+  --r-xl:    20px;
+  --r-pill:  999px;
+
+  /* ============================================================
+     SHADOWS — warm, ember-tinted (never blue-tinted greys)
+     ============================================================ */
+  --shadow-sm:    0 1px 2px rgba(13, 13, 13, 0.40);
+  --shadow-md:    0 6px 18px rgba(13, 13, 13, 0.45), 0 2px 4px rgba(13, 13, 13, 0.35);
+  --shadow-lg:    0 18px 40px rgba(13, 13, 13, 0.55), 0 4px 10px rgba(13, 13, 13, 0.4);
+  --shadow-glow:  0 0 40px rgba(247, 160, 25, 0.35);   /* gold ember halo */
+  --shadow-hot:   0 8px 24px rgba(232, 93, 26, 0.45);  /* CTA hover halo */
+
+  /* ============================================================
+     MOTION
+     ============================================================ */
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:    cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-fiesta: cubic-bezier(0.34, 1.56, 0.64, 1);  /* slight overshoot */
+  --dur-fast:   140ms;
+  --dur-base:   220ms;
+  --dur-slow:   420ms;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT DEFAULTS — usable as plain HTML
+   ============================================================ */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 { color: var(--fg); margin: 0 0 var(--s-4); }
+
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  /* Bungee Spice IS the fire-gradient — no extra background needed */
+}
+
+h2 {
+  font-family: var(--font-sub);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-allcaps);
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-heading);
+}
+
+h4 {
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-heading);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-allcaps-tight);
+}
+
+p {
+  margin: 0 0 var(--s-4);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.eyebrow {
+  font-family: var(--font-sub);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-allcaps);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: var(--fs-h3);
+  line-height: 1.35;
+  color: var(--fg);
+}
+
+.location-tag {
+  font-family: var(--font-location);
+  font-size: 28px;
+  color: var(--jade-teal);
+  /* Argyle Socks SUBSTITUTED with Caveat — needs real file. */
+}
+
+code, pre, kbd {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+
+::selection {
+  background: var(--fire-orange);
+  color: var(--warm-cream);
+}
