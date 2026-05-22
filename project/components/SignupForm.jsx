@@ -62,9 +62,12 @@ function Check({ active, children, onClick }) {
 
 }
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkoerazp";
+
 function SignupForm({ formRef }) {
   const [submitted, setSubmitted] = useS(false);
   const [submitting, setSubmitting] = useS(false);
+  const [error, setError] = useS(null);
   const [f, setF] = useS({
     fullName: "", nickname: "", email: "", phone: "", instagram: "",
     roles: [], company: "", area: "", guestsPerDay: "", asks: "",
@@ -83,11 +86,47 @@ function SignupForm({ formRef }) {
   }), [f]);
   const canSubmit = progress.A && progress.B && progress.C && progress.D;
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
     if (!canSubmit) return;
     setSubmitting(true);
-    setTimeout(() => {setSubmitting(false);setSubmitted(true);}, 900);
+    setError(null);
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: f.fullName,
+          nickname: f.nickname,
+          email: f.email,
+          phone: f.phone,
+          instagram: f.instagram,
+          roles: f.roles.join(", "),
+          company: f.company,
+          area: f.area,
+          guests_per_day: f.guestsPerDay,
+          food_recs_frequency: f.asks,
+          visited_casa_jaguar: f.visited,
+          recommendations_in_glenorchy: f.recommend,
+          why_join: f.why,
+          preferences: f.prefs.join(", "),
+          pre_booking_interest: f.prebook,
+          preferred_contact: f.contact,
+          birthday_month: f.birthday,
+          _subject: `New Ally Application — ${f.fullName} (${f.roles.join(", ") || "No role"})`
+        })
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setError(data?.errors?.[0]?.message || "Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Network error. Please check your connection and try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -138,6 +177,12 @@ function SignupForm({ formRef }) {
             <div key={k} className={"form-progress-dot " + (progress[k] ? "active" : "")}></div>
             )}
           </div>
+
+          {error && (
+            <div className="form-error" role="alert">
+              {error}
+            </div>
+          )}
 
           <form onSubmit={onSubmit} noValidate>
 

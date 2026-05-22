@@ -152,9 +152,83 @@ body::before {
   text-transform: uppercase;
   font-weight: 700;
 }
-@media (max-width: 720px) {
+.nav-end { display: flex; align-items: center; gap: var(--s-3); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-md);
+  background: rgba(255,255,255,0.04);
+  min-width: 44px; min-height: 44px;
+  align-items: center; justify-content: center;
+  transition: border-color var(--dur-fast), background var(--dur-fast);
+}
+.nav-hamburger:hover { border-color: var(--accent); }
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--fg); border-radius: 2px;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast);
+  transform-origin: center;
+}
+.nav-hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.is-open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-mobile-menu {
+  display: flex; flex-direction: column;
+  padding: var(--s-3) var(--s-6) var(--s-6);
+  background: rgba(13,13,13,0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border);
+  animation: slideDown 220ms var(--ease-out);
+}
+.nav-mobile-menu a {
+  font-family: var(--font-sub);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  display: block;
+  transition: color var(--dur-fast);
+  min-height: 44px;
+}
+.nav-mobile-menu a:hover, .nav-mobile-menu a:active { color: var(--accent); }
+.nav-mobile-cta {
+  margin-top: var(--s-5);
+  padding: 16px 24px;
+  background: var(--gradient-fire-h);
+  color: var(--fg-on-gold);
+  border-radius: var(--r-md);
+  font-family: var(--font-sub);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  min-height: 48px;
+  box-shadow: var(--shadow-hot);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 880px) {
   .nav-links { display: none; }
-  .nav-inner { padding: 12px var(--s-6); }
+  .nav-hamburger { display: flex; }
+  .nav-cta { display: none; }
+  .nav-inner { padding: 12px var(--s-5); gap: var(--s-3); }
+  .nav-brand-name { font-size: 16px; }
+  .nav-brand-prog { font-size: 10px; letter-spacing: 0.18em; }
+}
+@media (max-width: 480px) {
+  .nav-inner { padding: 10px var(--s-4); }
 }
 
 /* ============================================================
@@ -1368,3 +1442,90 @@ body::before {
 
 .scroll-reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
 .scroll-reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   MOBILE & TOUCH POLISH
+   ============================================================ */
+
+/* Smooth scrolling + remove iOS blue tap flash */
+html { scroll-behavior: smooth; }
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Form submission error state */
+.form-error {
+  background: rgba(192, 39, 26, 0.12);
+  border: 1px solid var(--chili-red);
+  color: #ffb1a5;
+  padding: 14px 16px;
+  border-radius: var(--r-md);
+  margin-bottom: var(--s-5);
+  font-size: 14px;
+  line-height: 1.4;
+  animation: rise 300ms var(--ease-out);
+}
+
+/* iOS Safari: prevent zoom on focus by ensuring inputs are ≥16px */
+.form-input, .form-textarea, .form-select { font-size: 16px; }
+
+/* Larger touch targets across all interactive controls */
+.btn { min-height: 48px; }
+.pill, .radio-pill, .checkbox { min-height: 44px; }
+.form-submit { min-height: 56px; }
+.tier { min-height: 480px; }
+
+/* iPhone notch safe-area padding */
+.footer { padding-bottom: calc(var(--s-8) + env(safe-area-inset-bottom, 0)); }
+@supports (padding: max(0px)) {
+  .container { padding-left: max(var(--s-8), env(safe-area-inset-left, 0)); padding-right: max(var(--s-8), env(safe-area-inset-right, 0)); }
+  @media (max-width: 720px) { .container { padding-left: max(var(--s-6), env(safe-area-inset-left, 0)); padding-right: max(var(--s-6), env(safe-area-inset-right, 0)); } }
+}
+
+/* "Tap to flip" hint instead of "Hover for reward" on touch devices */
+@media (hover: none) {
+  .tier-flip-hint span:last-child,
+  .tier-flip-hint { font-size: 10px; }
+}
+
+/* Hero stage shouldn't capture vertical scroll on mobile */
+@media (max-width: 980px) {
+  .hero-stage { touch-action: pan-y; min-height: 460px; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 100px 0 var(--s-12); min-height: auto; }
+  .hero-stage { min-height: 360px; }
+  .hero-ctas .btn { flex: 1 1 100%; justify-content: center; }
+  .hero-title { font-size: clamp(44px, 12vw, 72px); }
+  .ally-card { width: 95%; }
+  .ally-card-face { padding: 20px; }
+  .ally-card-qr { width: 54px; height: 54px; }
+}
+
+/* Atom diagram — let nodes breathe more on small screens */
+@media (max-width: 380px) {
+  .atom-stage { --atom-r: 38cqi; }
+  .atom-anti-tilt { top: -38px; left: -38px; width: 76px; height: 76px; }
+}
+
+/* Form section/card padding adjustments on narrow phones */
+@media (max-width: 480px) {
+  .signup-card { padding: var(--s-6) var(--s-5); border-radius: 18px; }
+  .form-section { margin-bottom: var(--s-8); }
+  .signup-foot { font-size: 11px; line-height: 1.4; text-align: center; flex-wrap: wrap; justify-content: center; }
+}
+
+/* Disable any 3D tilt rotation on touch (it's mouse-only anyway) */
+@media (hover: none) {
+  .step:hover { transform: none; }
+  .value-card:hover { transform: none; }
+  .point:hover { transform: none; }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
