@@ -130,6 +130,10 @@ function Tiers() {
             Each tier unlocks something real — not loyalty-program theatre.
             <span style={{ display: 'block', marginTop: 8, fontStyle: 'italic', color: 'var(--accent)' }}>Hover any medal to reveal the reward.</span>
           </p>
+          <p style={{ marginTop: 20, fontFamily: '"Bebas Neue"', fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', letterSpacing: '0.08em', color: 'var(--fg)' }}>
+            10 pts = $1 at Casa Jaguar —{' '}
+            <span style={{ color: 'var(--accent)' }}>food, merch, TacoBox & catering.</span>
+          </p>
         </div>
         <div className="tiers-grid">
           {tiers.map((t) => <Tier key={t.id} data={t} />)}
