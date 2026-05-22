@@ -24,8 +24,8 @@ function ValueProps() {
         <div className="section-header">
           <span className="eyebrow" style={{ fontSize: "30px" }}>— Why join —</span>
           <h2 className="section-title" style={{ fontFamily: "\"Bebas Neue\"" }}>
-            The people tourists trust most<br />
-            <em>deserve to be rewarded.</em>
+            Great recommendations<br />
+            <em>deserve great rewards.</em>
           </h2>
           <p className="section-sub" style={{ fontFamily: "system-ui" }}>
             You already recommend restaurants, experiences, and places every single day.
